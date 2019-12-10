@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Card from "./Card";
+import Table from "./Table01/Table01";
 import ProjectInfoPanel from "./ProjectInfoPanel";
 
 function App() {
+
+    const [project, setProject] = useState("WeWork Location")
+
     return <div>
-        <Header />
+        <Header header={project}/>
         <div className="row">
             <div className="column-project">
-                <ProjectInfoPanel />
+                <ProjectInfoPanel selectedProject = {[project, setProject]}/>
             </div>
             <div className="column-data">
                 <div className="row">
@@ -20,6 +24,7 @@ function App() {
                         <Card />
                     </div>
                 </div>
+                <Table />
                 <Card />
                 <Card />
                 <Card />

@@ -1,10 +1,8 @@
 import React from "react"
 import TableRow01 from "./TableRow01"
-import wwFloors from "/Users/mynovmbr/code/django-todo-react/frontend/src/data/floor_stats.js"
+// import wwFloors from "/Users/mynovmbr/code/django-todo-react/frontend/src/data/floor_stats.js"
 
-function Table01(props) {
-
-  const []
+function Table01() {
 
   return (
     <table className="card">

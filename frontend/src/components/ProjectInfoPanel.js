@@ -4,9 +4,9 @@ import ProjectSelectorOption from "./ProjectSelectorOption"
 import ProjectInfo from "./ProjectInfo";
 import wwBuildings from "../data/building_stats"
 
-function ProjectInfoPanel() {
+function ProjectInfoPanel(props) {
 
-    const [selectedProject, setProject] = useState("select your project")
+    const [selectedProject, setProject] = props.selectedProject
     const [buildingInfo, setBuildingInfo] = useState({
         buildingName: "",
         buildingAddress: "",
@@ -18,10 +18,9 @@ function ProjectInfoPanel() {
     })
 
     function handleSelect(event){
-        const {value, address} = event.target;
+        const {value} = event.target;
 
         setProject(value) 
-        // setBuildingInfo(address)
         updateBuildingInfo(value, wwBuildings)
     }
 
@@ -61,7 +60,7 @@ function ProjectInfoPanel() {
           <select value={selectedProject} onChange={handleSelect}>
             {wwBuildings.map(createOption)}
           </select>
-        <ProjectInfo 
+        {/* <ProjectInfo 
             buildingName={buildingInfo.buildingName}
             buildingAddress={buildingInfo.buildingAddress}
             buildingTerritory={buildingInfo.buildingTerritory}
@@ -69,7 +68,7 @@ function ProjectInfoPanel() {
             buildingUSF={buildingInfo.buildingUSF}
             buildingDeskCount={buildingInfo.buildingDeskCount}
             buildingRoomCount={buildingInfo.buildingRoomCount}
-        />
+        /> */}
     </div>
 }
 
