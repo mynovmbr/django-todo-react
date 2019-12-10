@@ -57,10 +57,11 @@ function ProjectInfoPanel(props) {
         <img className="card" src="./img/img_001.jpg" alt="No Image Loaded"/>
         <p></p>
         Select project to get start:
+        <p></p>
           <select value={selectedProject} onChange={handleSelect}>
             {wwBuildings.map(createOption)}
           </select>
-        {/* <ProjectInfo 
+        <ProjectInfo 
             buildingName={buildingInfo.buildingName}
             buildingAddress={buildingInfo.buildingAddress}
             buildingTerritory={buildingInfo.buildingTerritory}
@@ -68,7 +69,7 @@ function ProjectInfoPanel(props) {
             buildingUSF={buildingInfo.buildingUSF}
             buildingDeskCount={buildingInfo.buildingDeskCount}
             buildingRoomCount={buildingInfo.buildingRoomCount}
-        /> */}
+        />
     </div>
 }
 
