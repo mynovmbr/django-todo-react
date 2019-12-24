@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Card from "./Card";
 // import Table from "./Table01/Table01";
 import axios from "axios";
 import ProjectInfoPanel from "./ProjectInfoPanel";
+import ProjectPlan from "./ProjectPlan";
 
 function App() {
 
@@ -40,30 +42,36 @@ function App() {
 
     return <div>
         <Header header={project}/>
-        <div className="row">
-            <div className="column-project">
-                <ProjectInfoPanel selectedProject = {[project, setProject]}/>
-            </div>
-            <div className="column-data">
-                <button onClick={loadData}>Load Data</button>
-                <button onClick={() => {
-                    console.log("Clicked!")
-                }}>Test</button>
-                <div>{JSON.stringify(data)}</div>
+            <Router>
+                <Link to='/project'>Go to Project</Link>
                 <div className="row">
-                    <div className="column-50">
-                        <Card />
+                    <div className="column-project">
+                        <ProjectInfoPanel selectedProject = {[project, setProject]}/>
                     </div>
-                    <div className="column-50">
+                    <div className="column-data">
+                        <button onClick={loadData}>Load Data</button>
+                        <button onClick={() => {
+                            console.log("Clicked!")
+                        }}>Test</button>
+                        <div>{JSON.stringify(data)}</div>
+                        <div className="row">
+                            <div className="column-50">
+                                <Card />
+                            </div>
+                            <div className="column-50">
+                                <Card />
+                            </div>
+                        </div>
+                        {/* <Table /> */}
+                        <Card />
+                        <Card />
                         <Card />
                     </div>
                 </div>
-                {/* <Table /> */}
-                <Card />
-                <Card />
-                <Card />
-            </div>
-        </div>
+                <Switch>
+                    <Route exact path="/project" component={ProjectPlan} />
+                </Switch>
+            </Router>
         <Footer />
     </div>
 }
