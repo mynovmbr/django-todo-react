@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Card from "./Card";
-import PropertyInfoPanel from "./PropertyInfoPanel";
+// import PropertyInfoPanel from "./PropertyInfoPanel";
+import PropertyInfoPanel from "./PropertyInfoPanel_route";
+import wwBuildings from "../data/building_stats"
 
 
 function PropertyOverview(props) {
 
-    const [property, setProperty] = useState(props.PropertyUUID)
-    const [data, setData] = useState("Data is not loaded yet.")
+    let currentProperty = {}
+    const [propertyUUID] = useState(props.propertyUUID)
+    
+    // const [data, setData] = useState("Data is not loaded yet.")
 
     // function loadData(){
     //     console.log("Sending GET request to server...")
@@ -17,12 +21,21 @@ function PropertyOverview(props) {
     //         .catch(err => console.log(err));
     // };
 
+    function updatePropertyName(propertyUUID, wwBuildings) {
+        currentProperty = wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID)
+        console.log(currentProperty)
+    }
+
+    updatePropertyName(propertyUUID, wwBuildings)
+
     return (
         <div>
             <div className="row">
-                <h1>{props.propertyUUID}</h1>
                 <div className="column-property">
-                    <PropertyInfoPanel selectedProperty = {[property, setProperty]}/>
+                    <PropertyInfoPanel 
+                    selectedProperty = {propertyUUID}
+                    currentProperty = {currentProperty}
+                    />
                 </div>
                 <div className="column-data">
                     {/* <button onClick={loadData}>Load Data</button>

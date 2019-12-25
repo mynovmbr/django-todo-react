@@ -8,7 +8,7 @@ function PropertyInfoPanel(props) {
 
     // this Property Name is coming from it's parent level: Property Overview
     const currentProperty = props.currentProperty
-
+    
     const [selectedProperty, setProperty] = useState("Please Select a property to Start")
     const [buildingInfo, setBuildingInfo] = useState({
         buildingName: "",
@@ -59,7 +59,7 @@ function PropertyInfoPanel(props) {
     // console.log("selectedProperty is " + selectedProperty)
 
     return <div>
-        <h2>{currentProperty}</h2>
+        <h2>{currentProperty.BuildingName}</h2>
         <img className="card" src="/img/img_001.jpg" alt="project quickview"/>
         <p></p>
         Select Property to get start:
@@ -68,13 +68,13 @@ function PropertyInfoPanel(props) {
             {wwBuildings.map(createOption)}
           </select>
         <PropertyInfo 
-            buildingName={buildingInfo.buildingName}
-            buildingAddress={buildingInfo.buildingAddress}
-            buildingTerritory={buildingInfo.buildingTerritory}
-            buildingUUID={buildingInfo.buildingUUID}
-            buildingUSF={buildingInfo.buildingUSF}
-            buildingDeskCount={buildingInfo.buildingDeskCount}
-            buildingRoomCount={buildingInfo.buildingRoomCount}
+            buildingName={currentProperty.BuildingName}
+            buildingAddress={currentProperty.BuildingAddress}
+            buildingTerritory={currentProperty.BuildingTerritory}
+            buildingUUID={currentProperty.BuildingUUID}
+            buildingUSF={currentProperty.BuildingUSF}
+            buildingDeskCount={currentProperty.BuildingDeskCount}
+            buildingRoomCount={currentProperty.BuildingRoomCount}
         />
     </div>
 }
