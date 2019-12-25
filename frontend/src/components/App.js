@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import ProjectOverview from "./ProjectOverview";
-import ProjectPlan from "./ProjectPlan";
+import Home from "./Home";
+import PropertyOverview from "./PropertyOverview";
+import propertyPlan from "./PropertyPlan";
 import NotFount from "./NotFound";
 
 
@@ -13,10 +14,17 @@ function App() {
         <Header header="Nebula"/>
         <Router>
             <Link to="/">Home</Link>
-            <Link to="/projectplan">Project Plan</Link>
+            <Link to="/propertyplan">property Plan</Link>
             <Switch>
-                <Route exact path="/" component={ProjectOverview} />
-                <Route exact path="/projectplan" component={ProjectPlan} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/:propertyID/summary" render={(props) => {
+                    let pageID = props.location.pathname
+                                .replace('/summary','')
+                                .replace('/', '')
+                    return(<PropertyOverview propertyUUID={pageID} />)
+                }}/>
+                <Route exact path="/propertyOverview" component={PropertyOverview} />
+                <Route exact path="/propertyplan" component={propertyPlan} />
                 <Route component={NotFount} />
             </Switch>
         </Router>

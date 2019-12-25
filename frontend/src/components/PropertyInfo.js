@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProjectInfo(props) {
+function PropertyInfo(props) {
     return (
      <div>
          <h2>{props.buildingName}</h2>
@@ -14,4 +14,4 @@ function ProjectInfo(props) {
     );
 }
 
-export default ProjectInfo;
+export default PropertyInfo;

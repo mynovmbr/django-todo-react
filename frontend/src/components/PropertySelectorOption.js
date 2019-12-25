@@ -1,8 +1,8 @@
 import React from "react";
 
-function ProjectSelectorOption(props) {
+function PropertySelectorOption(props) {
 
     return <option value={props.value} >{props.name}</option>
 }
 
-export default ProjectSelectorOption
+export default PropertySelectorOption

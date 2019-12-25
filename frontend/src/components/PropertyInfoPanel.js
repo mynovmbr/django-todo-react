@@ -1,12 +1,12 @@
 import React, { useState }from "react";
-// import ProjectSelector from "./ProjectSelector"
-import ProjectSelectorOption from "./ProjectSelectorOption"
-import ProjectInfo from "./ProjectInfo";
+// import PropertySelector from "./PropertySelector"
+import PropertySelectorOption from "./PropertySelectorOption"
+import PropertyInfo from "./PropertyInfo";
 import wwBuildings from "../data/building_stats"
 
-function ProjectInfoPanel(props) {
+function PropertyInfoPanel(props) {
 
-    const [selectedProject, setProject] = props.selectedProject
+    const [selectedProperty, setProperty] = useState(props.selectedProperty)
     const [buildingInfo, setBuildingInfo] = useState({
         buildingName: "",
         buildingAddress: "",
@@ -20,7 +20,7 @@ function ProjectInfoPanel(props) {
     function handleSelect(event){
         const {value} = event.target;
 
-        setProject(value) 
+        setProperty(value) 
         updateBuildingInfo(value, wwBuildings)
     }
 
@@ -46,7 +46,7 @@ function ProjectInfoPanel(props) {
     }
 
     function createOption(wwBuildings) {
-        return <ProjectSelectorOption 
+        return <PropertySelectorOption 
         key={wwBuildings.BuildingUUID}
         name={wwBuildings.BuildingName} 
         value={wwBuildings.BuildingName}
@@ -56,12 +56,12 @@ function ProjectInfoPanel(props) {
     return <div>
         <img className="card" src="./img/img_001.jpg" alt="No Image Loaded"/>
         <p></p>
-        Select project to get start:
+        Select Property to get start:
         <p></p>
-          <select value={selectedProject} onChange={handleSelect}>
+          <select value={selectedProperty} onChange={handleSelect}>
             {wwBuildings.map(createOption)}
           </select>
-        <ProjectInfo 
+        <PropertyInfo 
             buildingName={buildingInfo.buildingName}
             buildingAddress={buildingInfo.buildingAddress}
             buildingTerritory={buildingInfo.buildingTerritory}
@@ -73,4 +73,4 @@ function ProjectInfoPanel(props) {
     </div>
 }
 
-export default ProjectInfoPanel;
+export default PropertyInfoPanel;
