@@ -4,8 +4,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Home from "./Home";
 import PropertyOverview from "./PropertyOverview";
-import propertyPlan from "./PropertyPlan";
 import NotFount from "./NotFound";
+import PropertyPlan from "./PropertyPlan";
 
 
 function App() {
@@ -14,7 +14,6 @@ function App() {
         <Header header="Nebula"/>
         <Router>
             <Link to="/">Home</Link>
-            <Link to="/propertyplan">property Plan</Link>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/:propertyID/summary" render={(props) => {
@@ -23,8 +22,12 @@ function App() {
                                 .replace('/', '')
                     return(<PropertyOverview propertyUUID={pageID} />)
                 }}/>
-                <Route exact path="/propertyOverview" component={PropertyOverview} />
-                <Route exact path="/propertyplan" component={propertyPlan} />
+                <Route exact path="/:propertyID/planview" render={(props) => {
+                    let pageID = props.location.pathname
+                                .replace('/planview','')
+                                .replace('/', '')
+                    return(<PropertyPlan propertyUUID={pageID} />)
+                }}/>
                 <Route component={NotFount} />
             </Switch>
         </Router>

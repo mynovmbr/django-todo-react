@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 // import axios from "axios";
 import Card from "./Card";
-// import PropertyInfoPanel from "./PropertyInfoPanel";
 import PropertyInfoPanel from "./PropertyInfoPanel_route";
 import wwBuildings from "../data/building_stats"
 
@@ -21,12 +20,12 @@ function PropertyOverview(props) {
     //         .catch(err => console.log(err));
     // };
 
-    function updatePropertyName(propertyUUID, wwBuildings) {
+    function updateProperty(propertyUUID, wwBuildings) {
         currentProperty = wwBuildings.find(wwBuilding => wwBuilding.BuildingUUID === propertyUUID)
-        console.log(currentProperty)
+        // console.log(currentProperty)
     }
 
-    updatePropertyName(propertyUUID, wwBuildings)
+    updateProperty(propertyUUID, wwBuildings)
 
     return (
         <div>
